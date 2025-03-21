@@ -1,0 +1,42 @@
+Terminal
+Step 1 (For Windows)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+Step 2 (Create a folder)
+uv init helloworld
+
+cd helloworld
+
+Step 3 (activate environment)
+.venv/scripts/activate
+
+Step 4 (add chain lit)
+uv add chainlit
+
+Step 5 (create a file in main folder)
+chatbot.py
+
+import chainlit as cl
+
+@cl.on_message
+async def main(message: cl.Message):
+    # Our custom logic goes here...
+    # Send a fake response back to the user
+    await cl.Message(
+        content=f"Received: {message.content}",
+    ).send()
+
+
+Step 6 (run chatbot file)
+uv run chainlit run chatbot.py -w
+
+screenshot is attached for bot interface, 
+
+next step responsive chatbot (connecting LLM, with Gemini API)
+
+Documentation
+Chain Lit
+https://docs.chainlit.io/get-started/overview
+
+UV
+https://docs.astral.sh/uv/
